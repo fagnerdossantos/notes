@@ -8,6 +8,13 @@ This is a simple note-taking app built using Flutter.
 -   Store notes locally in a SQLite database.
 -   Easily view and manage your notes in one place.
 
+
+## Working APP
+
+
+https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
