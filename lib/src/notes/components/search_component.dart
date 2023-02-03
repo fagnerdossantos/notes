@@ -10,43 +10,40 @@ class SearchComponent extends StatelessWidget {
     final double height = size.height;
     final double width = size.width;
 
-    return Container(
-      // Size
-      height: height * .1,
-      width: width,
-
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-      ),
-
-      decoration: BoxDecoration(
-        // Colors
-        color: Colors.transparent.withOpacity(
-          0.1,
-        ),
-
-        // Shape
+    return Card(
+      // Card Shape
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           20,
         ),
       ),
 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          // Search Text
-          Text(
-            "Search",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      // Elevation
+      elevation: 3,
 
-          Icon(
-            Icons.search,
-          ),
-        ],
+      child: Container(
+        // Size
+        height: height * .1,
+        width: width,
+
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Search Text
+            Text(
+              "Search",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+
+            const Icon(
+              Icons.search,
+            ),
+          ],
+        ),
       ),
     );
   }

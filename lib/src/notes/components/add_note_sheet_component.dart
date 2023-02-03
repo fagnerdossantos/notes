@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:notes/src/home/pages/home_page.dart';
-import 'package:notes/src/notes/components/add_button_component.dart';
+import 'package:notes/src/global/add_button_component.dart';
 import 'package:notes/src/notes/components/notes_field.dart';
+import 'package:notes/src/global/update_button_component.dart';
+import 'package:notes/src/notes/models/notes_model.dart';
 
-Future addNoteSheetComponents(
-        {required BuildContext context, required Size size}) =>
+enum BtnAction {
+  add,
+  edit;
+}
+
+Future addNoteSheetComponents({
+  required BuildContext context,
+  required Size size,
+  required BtnAction action,
+  required NotesModel? originalModel,
+}) =>
     showModalBottomSheet(
       // Allow to use total screen size
       isScrollControlled: true,
@@ -16,86 +27,83 @@ Future addNoteSheetComponents(
         final double height = size.height;
         final double width = size.width;
 
-        return SizedBox(
-          // Size
-          height: height * .8,
-          width: width,
+        return ListView(
+          children: [
+            SizedBox(
+              // Size
+              height: height * .8,
+              width: width,
 
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Column(
-              // Column Alignment
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Column(
+                  // Column Alignment
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
-              children: [
-                // ADD Text
-                const Text(
-                  "Add note",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                  children: [
+                    // ADD Text
+                    Text(
+                      "Add note",
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
 
-                verticalSpace(
-                  height: height * .05,
-                ),
+                    verticalSpace(
+                      height: height * .05,
+                    ),
 
-                // Title
-                const Text(
-                  "Title",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                    // Title
+                    Text(
+                      "Title",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
 
-                verticalSpace(
-                  height: height * .01,
-                ),
+                    verticalSpace(
+                      height: height * .01,
+                    ),
 
-                NotesField(size: size, id: 1),
+                    NotesField(size: size, id: 1),
 
-                verticalSpace(
-                  height: height * .05,
-                ),
+                    verticalSpace(
+                      height: height * .05,
+                    ),
 
-                // Note
-                const Text(
-                  "Note",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                    // Note
+                    Text(
+                      "Note",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
 
-                verticalSpace(
-                  height: height * .01,
-                ),
+                    verticalSpace(
+                      height: height * .01,
+                    ),
 
-                NotesField(
-                  size: size,
-                  id: 2,
-                ),
+                    NotesField(
+                      size: size,
+                      id: 2,
+                    ),
 
-                verticalSpace(
-                  height: height * .05,
-                ),
+                    verticalSpace(
+                      height: height * .05,
+                    ),
 
-                // Add Button
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    AddButtonComponent(),
+                    // Add and Update Button
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        action == BtnAction.add
+                            ? const AddButtonComponent()
+                            : EditButtonComponent(
+                                original: originalModel!,
+                              ),
+                      ],
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
-          ),
+          ],
         );
       }),
     );

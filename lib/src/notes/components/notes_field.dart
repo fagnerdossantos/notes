@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+final noteTitleController = TextEditingController();
+final noteController = TextEditingController();
+
 class NotesField extends StatelessWidget {
   final Size size;
   final int id;
@@ -11,27 +14,28 @@ class NotesField extends StatelessWidget {
     final double height = size.height;
     final double width = size.width;
 
-    return Container(
-      // Size
-      height: (id == 1) ? height * .1 : height * .3,
-      width: width,
+    return Card(
+      // elevation
+      elevation: 2,
 
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 10,
-      ),
-
-      decoration: BoxDecoration(
-        // Shape
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-
-        // Border
-        border: Border.all(color: Colors.black, width: 2),
       ),
 
-      child: TextField(
-        maxLines: (id == 1) ? 1 : 15,
-        maxLength: (id == 1) ? 15 : 400,
+      child: Container(
+        // Size
+        height: (id == 1) ? height * .1 : height * .25,
+        width: width,
+
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 10,
+        ),
+
+        child: TextField(
+          maxLength: (id == 1) ? 15 : null,
+          controller: (id == 1) ? noteTitleController : noteController,
+        ),
       ),
     );
   }

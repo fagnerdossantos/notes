@@ -8,11 +8,12 @@ class HomeLabels extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-      ),
+      style: Theme.of(context).textTheme.displaySmall,
     );
   }
 }
+
+// style: const TextStyle(
+//         fontSize: 30,
+//         fontWeight: FontWeight.bold,
+//       ),

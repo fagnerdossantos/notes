@@ -77,6 +77,8 @@ class HomePage extends StatelessWidget {
         onPressed: () => addNoteSheetComponents(
           context: context,
           size: size,
+          action: BtnAction.add,
+          originalModel: null,
         ),
 
         // Icon
