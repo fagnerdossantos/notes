@@ -35,4 +35,21 @@ class Database extends ChangeNotifier {
 
     return [date, hour];
   }
+
+  // New methods to use with bloc
+
+  List<NotesModel> createNote(NotesModel model) {
+    _notesList.add(model);
+    return _notesList;
+  }
+
+  List<NotesModel> removeNote(NotesModel model) {
+    _notesList.remove(model);
+    return _notesList;
+  }
+
+  List<NotesModel> updateNote(NotesModel previus, NotesModel newModel) {
+    _notesList[_notesList.indexOf(previus)] = newModel;
+    return _notesList;
+  }
 }
