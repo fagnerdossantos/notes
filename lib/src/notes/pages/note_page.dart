@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/database/notes_db.dart';
 import 'package:notes/src/notes/components/add_note_sheet_component.dart';
 import 'package:notes/src/notes/components/notes_field.dart';
 import 'package:notes/src/notes/models/notes_model.dart';
-import 'package:provider/provider.dart';
 
 class NotePage extends StatelessWidget {
   const NotePage({super.key});
@@ -11,11 +9,7 @@ class NotePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    final int index = ModalRoute.of(context)!.settings.arguments as int;
-
-    // DB Controller
-    final controller = context.watch<Database>();
-    NotesModel model = controller.notesList[index];
+    final model = ModalRoute.of(context)!.settings.arguments as NotesModel;
 
     // Screen Size
     final Size size = MediaQuery.of(context).size;
@@ -34,6 +28,9 @@ class NotePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
               children: [
+                // IconButton(
+                //     onPressed: () => Navigator.pop(context),
+                //     icon: Icon(Icons.arrow_back)),
                 // Note Title
                 Text(
                   model.title,

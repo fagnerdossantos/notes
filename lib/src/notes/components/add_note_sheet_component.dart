@@ -27,6 +27,9 @@ Future addNoteSheetComponents({
         final double height = size.height;
         final double width = size.width;
 
+        // Bloc Controller
+        // final controller = BlocProvider.of<NotesBloc>(context);
+
         return ListView(
           children: [
             SizedBox(

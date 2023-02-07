@@ -1,17 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:notes/src/database/notes_db.dart';
+
 import 'package:notes/src/global/popu_menu.dart';
-import 'package:provider/provider.dart';
+import 'package:notes/src/notes/models/notes_model.dart';
 
 class NotesCard extends StatelessWidget {
   final int index;
-  const NotesCard({super.key, required this.index});
+  final NotesModel model;
+
+  const NotesCard({
+    Key? key,
+    required this.index,
+    required this.model,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<Database>();
-    final note = controller.notesList[index];
-
     return Card(
       // Card Shape
       shape: RoundedRectangleBorder(
@@ -43,7 +47,7 @@ class NotesCard extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    note.title,
+                    model.title,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
@@ -52,7 +56,7 @@ class NotesCard extends StatelessWidget {
                 Expanded(
                   flex: 11,
                   child: Text(
-                    note.notes,
+                    model.notes,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
@@ -65,7 +69,7 @@ class NotesCard extends StatelessWidget {
                     children: [
                       // Date
                       Text(
-                        note.date,
+                        model.date,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/database/notes_db.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/src/bloc/notes_bloc.dart';
+import 'package:notes/src/database/id_time.dart';
 import 'package:notes/src/notes/components/notes_field.dart';
 import 'package:notes/src/notes/models/notes_model.dart';
-import 'package:provider/provider.dart';
 
 class EditButtonComponent extends StatelessWidget {
   final NotesModel original;
@@ -10,7 +11,10 @@ class EditButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final connection = context.read<Database>();
+    // Bloc
+    final notesBlocController = BlocProvider.of<NotesBloc>(context);
+
+    final IdTime idTime = IdTime();
 
     return OutlinedButton(
       // Action
@@ -18,7 +22,8 @@ class EditButtonComponent extends StatelessWidget {
         final title = noteTitleController.text;
         final notes = noteController.text;
 
-        final time = connection.getDate();
+        idTime.generateTime();
+        List<String> time = idTime.time;
 
         final model = NotesModel(
           id: original.id,
@@ -29,7 +34,12 @@ class EditButtonComponent extends StatelessWidget {
         );
 
         // Saving
-        connection.update(original, model);
+        notesBlocController.add(
+          UpdateNoteEvent(
+            previusNote: original,
+            newNote: model,
+          ),
+        );
 
         noteTitleController.clear();
         noteController.clear();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/database/notes_db.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/src/bloc/notes_bloc.dart';
 import 'package:notes/src/global/theme_switch.dart';
-import 'package:notes/src/home/pages/home_page.dart';
-import 'package:notes/src/notes/pages/note_page.dart';
+import 'package:notes/src/routes/app_router.dart';
 import 'package:provider/provider.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,10 +10,12 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    final AppRouter routes = AppRouter();
+
+    return MultiBlocProvider(
       // Providers
       providers: [
-        ChangeNotifierProvider(create: (context) => Database()),
+        BlocProvider(create: (_) => NotesBloc()),
       ],
 
       // Notifier to change APP Theme
@@ -24,13 +26,7 @@ class AppWidget extends StatelessWidget {
         child: Consumer<ThemeSwitch>(
           builder: ((context, value, child) {
             return MaterialApp(
-              // Routs
-              initialRoute: "/",
-
-              routes: {
-                "/": (_) => const HomePage(),
-                "/note": (_) => const NotePage()
-              },
+              onGenerateRoute: routes.onGeneratedRoute,
 
               // Theme
               theme: value.theme,

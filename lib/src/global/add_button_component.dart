@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/database/notes_db.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/src/bloc/notes_bloc.dart';
+import 'package:notes/src/database/id_time.dart';
 import 'package:notes/src/notes/components/notes_field.dart';
 import 'package:notes/src/notes/models/notes_model.dart';
-import 'package:provider/provider.dart';
 
 class AddButtonComponent extends StatelessWidget {
   const AddButtonComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final connection = context.read<Database>();
+    // Bloc
+    final notesBloc = BlocProvider.of<NotesBloc>(context);
+
+    final IdTime idTime = IdTime();
 
     return OutlinedButton(
       // Action
       onPressed: () {
-        connection.generateId();
-        final id = connection.id;
-        final title = noteTitleController.text;
-        final notes = noteController.text;
+        //
+        idTime.generateId();
+        idTime.generateTime();
 
-        final time = connection.getDate();
+        final int id = idTime.id;
+        final List<String> time = idTime.time;
+
+        final String title = noteTitleController.text;
+        final String notes = noteController.text;
 
         final model = NotesModel(
           id: id,
@@ -30,7 +37,7 @@ class AddButtonComponent extends StatelessWidget {
         );
 
         // Saving
-        connection.create(model);
+        notesBloc.add(AddNoteEvent(note: model));
 
         noteTitleController.clear();
         noteController.clear();
@@ -41,7 +48,6 @@ class AddButtonComponent extends StatelessWidget {
       // Label
       child: Row(
         children: [
-
           // Button text
           Text(
             "Add note",
