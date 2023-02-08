@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes/src/bloc/notes_bloc.dart';
-import 'package:notes/src/global/theme_switch.dart';
-import 'package:notes/src/routes/app_router.dart';
+import 'package:notes/src/logic/blocs/notes_bloc.dart';
+import 'package:notes/src/presentation/themes/theme_switch.dart';
+import 'package:notes/src/logic/routes/app_router.dart';
 import 'package:provider/provider.dart';
 
 class AppWidget extends StatelessWidget {
@@ -27,6 +27,7 @@ class AppWidget extends StatelessWidget {
           builder: ((context, value, child) {
             return MaterialApp(
               onGenerateRoute: routes.onGeneratedRoute,
+              //home: const CreateNotePage(),
 
               // Theme
               theme: value.theme,

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/global/theme_switch.dart';
+import 'package:notes/src/presentation/global/button_builder.dart';
+import 'package:notes/src/presentation/themes/theme_switch.dart';
 import 'package:notes/src/home/components/home_labels_component.dart';
-import 'package:notes/src/notes/components/add_note_sheet_component.dart';
-import 'package:notes/src/notes/components/notes_builder_component.dart';
+import 'package:notes/src/presentation/widgets/notes_builder.dart';
 import 'package:notes/src/notes/components/search_component.dart';
+import 'package:notes/utils/consts.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,8 +24,8 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 2,
-            horizontal: 9,
+            vertical: 8,
+            horizontal: 8,
           ),
 
           // Content
@@ -72,22 +73,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        // Action
-        onPressed: () => addNoteSheetComponents(
-          context: context,
-          size: size,
-          action: BtnAction.add,
-          originalModel: null,
-        ),
-
-        // Icon
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const ButtonBuilder(action: BtnActions.create),
     );
   }
 }
-
-SizedBox verticalSpace({double height = 20}) => SizedBox(
-      height: height,
-    );

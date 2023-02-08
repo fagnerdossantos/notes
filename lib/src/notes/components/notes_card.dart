@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:notes/src/global/popu_menu.dart';
 import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/widgets/rounded_card_widget.dart';
 
 class NotesCard extends StatelessWidget {
   final int index;
@@ -16,14 +17,7 @@ class NotesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      // Card Shape
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-
-      elevation: 3.0,
-
+    return RoundedCardWidget(
       child: Stack(
         children: [
           Align(

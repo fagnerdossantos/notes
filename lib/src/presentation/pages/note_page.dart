@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/notes/components/add_note_sheet_component.dart';
-import 'package:notes/src/notes/components/notes_field.dart';
 import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/global/button_builder.dart';
+import 'package:notes/utils/consts.dart';
 
 class NotePage extends StatelessWidget {
   const NotePage({super.key});
@@ -22,7 +22,7 @@ class NotePage extends StatelessWidget {
           width: double.infinity,
 
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: defaultPadding,
             child: Column(
               // Column Alignment
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -111,23 +111,7 @@ class NotePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        // Action
-        onPressed: () {
-          // Setting controllers value to edit
-          noteTitleController.text = model.title;
-          noteController.text = model.notes;
-
-          // Calling the bottom sheet
-          addNoteSheetComponents(
-            context: context,
-            size: size,
-            action: BtnAction.edit,
-            originalModel: model,
-          );
-        },
-        child: const Icon(Icons.edit),
-      ),
+      floatingActionButton: const ButtonBuilder(action: BtnActions.edit),
     );
   }
 }
