@@ -21,20 +21,19 @@ class AppWidget extends StatelessWidget {
       // Notifier to change APP Theme
       child: ChangeNotifierProvider(
         // Consumer
-        create: ((_) => ThemeSwitch()),
+        create: (_) => ThemeSwitch(),
 
         child: Consumer<ThemeSwitch>(
-          builder: ((context, value, child) {
+          builder: (context, value, child) {
             return MaterialApp(
               onGenerateRoute: routes.onGeneratedRoute,
-              //home: const CreateNotePage(),
 
               // Theme
               theme: value.theme,
 
               debugShowCheckedModeBanner: false,
             );
-          }),
+          },
         ),
       ),
     );

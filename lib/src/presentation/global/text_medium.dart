@@ -9,7 +9,7 @@ class TextMedium extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.headlineSmall,
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.start,
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/models/notes_model.dart';
 
 class Database {
   final List<NotesModel> _notesList = [];
@@ -18,5 +18,11 @@ class Database {
   List<NotesModel> updateNote(NotesModel previus, NotesModel newModel) {
     _notesList[_notesList.indexOf(previus)] = newModel;
     return _notesList;
+  }
+
+  List<NotesModel> searchNote(String search) {
+    return _notesList
+        .where((element) => element.title.contains(search))
+        .toList();
   }
 }

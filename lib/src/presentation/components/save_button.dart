@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/src/logic/blocs/notes_bloc.dart';
 import 'package:notes/src/database/id_time.dart';
-import 'package:notes/src/notes/components/notes_field.dart';
-import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/components/create_text_field.dart';
+import 'package:notes/src/presentation/models/notes_model.dart';
+import 'package:notes/src/presentation/components/edit_field.dart';
 
 class SaveButton extends StatelessWidget {
-  final NotesModel? originalNote;
-  const SaveButton({super.key, this.originalNote});
+  final NotesModel? originalModel;
+  const SaveButton({super.key, this.originalModel});
 
   @override
   Widget build(BuildContext context) {
     // Bloc
     final notesBloc = BlocProvider.of<NotesBloc>(context);
 
-    final IdTime idTime = IdTime();
-
     return OutlinedButton(
       // Action
       onPressed: () {
-        if (originalNote == null) {
-          _create(notesBloc, idTime);
+        if (originalModel == null) {
+          _create(notesBloc);
         } else {
-          _update(notesBloc, idTime, originalNote!);
+          _update(notesBloc, originalModel!);
         }
 
         noteTitleController.clear();
@@ -52,8 +51,10 @@ class SaveButton extends StatelessWidget {
   }
 }
 
-_create(NotesBloc notesBloc, IdTime idTime) {
+_create(NotesBloc notesBloc) {
   //
+  final IdTime idTime = IdTime();
+
   idTime.generateId();
   idTime.generateTime();
 
@@ -75,12 +76,18 @@ _create(NotesBloc notesBloc, IdTime idTime) {
   notesBloc.add(AddNoteEvent(note: model));
 }
 
-_update(NotesBloc notesBloc, IdTime idTime, NotesModel originalNote) {
-  final int id = originalNote.id;
+_update(NotesBloc notesBloc, NotesModel originalModel) {
+  //
+  final IdTime idTime = IdTime();
+
+  idTime.generateId();
+  idTime.generateTime();
+
+  final int id = originalModel.id;
   final List<String> time = idTime.time;
 
-  final String title = noteTitleController.text;
-  final String notes = noteController.text;
+  final String title = titleEditController.text;
+  final String notes = noteEditController.text;
 
   final model = NotesModel(
     id: id,
@@ -92,7 +99,10 @@ _update(NotesBloc notesBloc, IdTime idTime, NotesModel originalNote) {
 
   // Saving
   notesBloc.add(UpdateNoteEvent(
-    previusNote: originalNote,
+    previusNote: originalModel,
     newNote: model,
   ));
+
+  titleEditController.clear();
+  noteEditController.clear();
 }

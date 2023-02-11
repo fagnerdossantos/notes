@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:notes/src/global/popu_menu.dart';
-import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/components/popu_menu.dart';
+import 'package:notes/src/presentation/models/notes_model.dart';
 import 'package:notes/src/presentation/widgets/rounded_card_widget.dart';
 
 class NotesCard extends StatelessWidget {
@@ -23,7 +23,7 @@ class NotesCard extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: PopUpMenu(
-              index: index,
+              model: model,
             ),
           ),
 

@@ -27,3 +27,10 @@ class UpdateNoteEvent extends NotesEvent {
     required this.newNote,
   });
 }
+
+class SearchNoteEvent extends NotesEvent {
+  String search;
+  SearchNoteEvent({
+    required this.search,
+  });
+}

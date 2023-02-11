@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/notes/components/notes_field.dart';
+import 'package:notes/src/presentation/components/create_text_field.dart';
 import 'package:notes/src/presentation/global/button_builder.dart';
 import 'package:notes/src/presentation/global/text_large.dart';
 import 'package:notes/src/presentation/global/text_medium.dart';
@@ -21,15 +21,15 @@ class CreateNotePage extends StatelessWidget {
         centerTitle: true,
       ),
 
-      // App body
       body: Padding(
         padding: defaultPadding,
-        child: Column(
-          // Column Alignment
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
 
+        child: ListView(
           children: [
+            verticalSpace(
+              height: height * .05,
+            ),
+
             // Title Field
             const TextMedium(
               text: "Title",
@@ -39,7 +39,7 @@ class CreateNotePage extends StatelessWidget {
               height: height * .01,
             ),
 
-            NotesField(size: size, id: 1),
+            CreateTextField(size: size, id: 1),
             verticalSpace(
               height: height * .05,
             ),
@@ -53,7 +53,7 @@ class CreateNotePage extends StatelessWidget {
               height: height * .01,
             ),
 
-            NotesField(
+            CreateTextField(
               size: size,
               id: 2,
             ),

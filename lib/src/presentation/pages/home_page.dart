@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:notes/src/presentation/global/button_builder.dart';
 import 'package:notes/src/presentation/themes/theme_switch.dart';
-import 'package:notes/src/home/components/home_labels_component.dart';
+import 'package:notes/src/presentation/components/home_labels_component.dart';
 import 'package:notes/src/presentation/widgets/notes_builder.dart';
-import 'package:notes/src/notes/components/search_component.dart';
+import 'package:notes/src/presentation/components/search_notes.dart';
 import 'package:notes/utils/consts.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
     // Screen Size
     final Size size = MediaQuery.of(context).size;
     final double height = size.height;
+    final double width = size.width;
 
     // Theme Controller
     final controller = context.watch<ThemeSwitch>();
@@ -30,7 +31,6 @@ class HomePage extends StatelessWidget {
 
           // Content
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Welcoming label and Theme Switch
               Row(
@@ -52,12 +52,24 @@ class HomePage extends StatelessWidget {
                 height: height * .05,
               ),
 
-              SearchComponent(
+              SearchNotes(
                 size: size,
               ),
 
               verticalSpace(
-                height: height * .05,
+                height: height * .03,
+              ),
+
+              Divider(
+                height: 0,
+                indent: width * .1,
+                endIndent: width * .1,
+                thickness: 1,
+                color: Colors.blueGrey.withOpacity(0.3),
+              ),
+
+              verticalSpace(
+                height: height * .02,
               ),
 
               const HomeLabels(

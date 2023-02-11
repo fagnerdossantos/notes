@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/src/logic/blocs/notes_bloc.dart';
-import 'package:notes/src/notes/components/notes_card.dart';
-import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/components/notes_card.dart';
+import 'package:notes/src/presentation/models/notes_model.dart';
+import 'package:notes/src/presentation/components/edit_field.dart';
 import 'package:notes/src/presentation/widgets/no_data_builder.dart';
 
 class NotesBuilderComponent extends StatelessWidget {
@@ -15,7 +16,7 @@ class NotesBuilderComponent extends StatelessWidget {
       builder: (_, state) {
         // No Data
         if (state.notesList.isEmpty) {
-          return const NoDataBuilder();
+          return ListView.builder(itemBuilder: (_,__)=> const NoDataBuilder());
 
           // Data
         } else {
@@ -32,9 +33,13 @@ class NotesBuilderComponent extends StatelessWidget {
 
               return GestureDetector(
                 // Action
-                onTap: () =>
-                    Navigator.pushNamed(context, "/note", arguments: model),
+                onTap: () {
+                  // To set values inside edit controllers
+                  titleEditController.text = model.title;
+                  noteEditController.text = model.notes;
 
+                  Navigator.pushNamed(context, "/note", arguments: model);
+                },
                 // Content
                 child: NotesCard(
                   index: index,

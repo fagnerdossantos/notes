@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:notes/src/database/notes_db.dart';
-import 'package:notes/src/notes/models/notes_model.dart';
+import 'package:notes/src/presentation/models/notes_model.dart';
 
 part 'notes_event.dart';
 part 'notes_state.dart';
@@ -38,12 +38,23 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
       },
     );
 
-    //Update
+    // Update
     on<UpdateNoteEvent>(
       (event, emit) {
         emit(
           NotesSuccessState(
             notesList: _repository.updateNote(event.previusNote, event.newNote),
+          ),
+        );
+      },
+    );
+
+    // Search
+    on<SearchNoteEvent>(
+      (event, emit) {
+        emit(
+          NotesSuccessState(
+            notesList: _repository.searchNote(event.search),
           ),
         );
       },
