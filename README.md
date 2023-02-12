@@ -1,38 +1,73 @@
-# Notes App
+# Notes
 
-This is a simple note-taking app built using Flutter.
+This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
 
-## Features
+## Key Features
 
--   Create, read, update and delete notes.
--   Store notes locally in a SQLite database.
--   Easily view and manage your notes in one place.
-
+-   Create new notes with ease.
+-   View, edit and delete your existing notes.
+-   > Not implemented! Store notes locally on your device in a **.
+-   User-friendly interface to manage your notes.
 
 ## Working APP
 
-
-https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4
-
+You can preview a demo video of the working app here: [https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4](https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+To run the app on your local machine, follow these steps:
 
 ### Prerequisites
 
 -   Flutter SDK
--   Android Studio or Visual Studio Code with Flutter extension
+-   Android Studio or Visual Studio Code with Flutter extension installed
 
 ### Installation
 
-1.  Clone this repository:
+1.  Clone the repository to your local machine:
+``` bashrc
+ git clone https://github.com/fagnerdossantos/notes
+ ```
+ 2.  Navigate to the project directory:
+ ``` bashrc
+ cd notes/
+ ```
+# Notes App
+
+This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
+
+## Key Features
+
+-   Create new notes with ease.
+-   View, edit and delete your existing notes.
+-   Store notes locally on your device in a SQLite database.
+-   User-friendly interface to manage your notes.
+
+## Working APP
+
+You can preview a demo video of the working app here: <br>
+
+
+https://user-images.githubusercontent.com/61123877/218332811-0d8a31af-4c27-43bd-946c-8d418093f9b6.mp4
+
+
+
+## Getting Started
+
+To run the app on your local machine, follow these steps:
+
+### Prerequisites
+
+-   Flutter SDK
+-   Android Studio or Visual Studio Code with Flutter extension installed
+
+### Installation
+
+1.  Clone the repository to your local machine:
 
 bashCopy code
 
-```
-git clone https://github.com/fagnerdossantos/notes
-  ```
+`git clone https://github.com/fagnerdossantos/notes` 
 
 2.  Navigate to the project directory:
 
@@ -42,24 +77,12 @@ bashCopy code
 
 3.  Install the dependencies:
 
-csharpCopy code
-
 `flutter pub get` 
 
 4.  Run the app:
 
-Copy code
-
-`flutter run` 
-
-## Built With
-
--   [Flutter](https://flutter.dev/) - A mobile app development framework created by Google.
+`flutter run`
 
 ## Contributing
 
-Feel free to contribute to this project by submitting a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/chat/LICENSE) file for details.
+This project is open to contributions and improvements. If you would like to contribute, simply submit a pull request.
