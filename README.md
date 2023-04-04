@@ -1,40 +1,4 @@
 <<<<<<< HEAD
-# Notes
-
-This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
-
-## Key Features
-
--   Create new notes with ease.
--   View, edit and delete your existing notes.
--   Store notes locally on your device in a **.
--   User-friendly interface to manage your notes.
-
-## Working APP
-
-You can preview a demo video of the working app here: [https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4](https://user-images.githubusercontent.com/61123877/216673553-50d0e884-0c9e-4279-9bff-b1d76dfe859a.mp4)
-
-## Getting Started
-
-To run the app on your local machine, follow these steps:
-
-### Prerequisites
-
--   Flutter SDK
--   Android Studio or Visual Studio Code with Flutter extension installed
-
-### Installation
-
-1.  Clone the repository to your local machine:
-``` bashrc
- git clone https://github.com/fagnerdossantos/notes
- ```
- 2.  Navigate to the project directory:
- ``` bashrc
- cd notes/
- ```
-=======
->>>>>>> b71fc21c63586ef40807e8a0d0bbb9b6fc5e613c
 # Notes App
 
 This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
