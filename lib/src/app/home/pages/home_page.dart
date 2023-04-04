@@ -1,65 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/app/global/components/text/sutitle_text.dart';
-import 'package:notes/src/app/global/components/text/title_text.dart';
-import 'package:notes/src/app/global/widgets/button_builder.dart';
-import 'package:notes/src/app/notes/widgets/notes_builder.dart';
-import 'package:notes/src/app/notes/components/search_notes.dart';
-import 'package:notes/src/themes/theme_switch.dart';
-import 'package:notes/utils/consts.dart';
+import 'package:notes/src/app/global/components/custom_bottom_sheet.dart';
+import 'package:notes/src/app/global/components/custom_drawer.dart';
+import 'package:notes/src/app/global/components/search_bar.dart';
+import 'package:notes/src/app/note/widgets/custom_notes_card_builder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Screen Size
     final Size size = MediaQuery.of(context).size;
-    final double height = size.height;
 
     return Scaffold(
-      // App Body
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 8,
-          ),
-
-          // Content
-          child: Column(
-            children: [
-              // Welcoming label and Theme Switch
-              const TitleText(
-                label: "Welcome, back!",
-                widgetFunc: ThemeSwitch(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: CustomScrollView(
+          slivers: [
+            // AppBar
+            SliverAppBar.medium(
+              title: Center(
+                // Title
+                child: Text(
+                  "Notes",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
+              actions: const [
+                SearchBar(),
+              ],
+            ),
 
-              verticalSpace(
-                height: height * .05,
-              ),
-
-              SearchNotes(
-                size: size,
-              ),
-
-              verticalSpace(
-                height: height * .03,
-              ),
-
-              const SubtitleText(
-                label: "My notes",
-              ),
-
-              verticalSpace(height: height * .01),
-
-              const Expanded(
-                child: NotesBuilderComponent(),
-              ),
-            ],
-          ),
+            // Notes
+            const NotesCardBuilder(),
+          ],
         ),
       ),
-      floatingActionButton: const ButtonBuilder(action: BtnActions.create),
+
+      // Drawer
+      drawer: Drawer(
+        child: CustomDrawer(
+          size: size,
+        ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          customBottomSheet(context: context, size: size);
+        },
+        backgroundColor: Colors.black,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

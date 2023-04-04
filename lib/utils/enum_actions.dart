@@ -1,4 +1,0 @@
-enum BtnActions {
-  create,
-  save,
-}

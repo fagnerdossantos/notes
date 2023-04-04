@@ -2,38 +2,83 @@ import 'package:flutter/material.dart';
 
 class ThemeDark {
   // Getter
-  ThemeData get dark => _dark;
+  ThemeData get dark => _themeData;
 
-  final ThemeData _dark = ThemeData(
-    brightness: Brightness.dark,
-    useMaterial3: true,
-    colorSchemeSeed: const Color.fromARGB(255, 2, 79, 196),
+  // Texts
+  final ThemeData _themeData = ThemeData(
+    // APP BAR
+    appBarTheme: const AppBarTheme(
+      // Colors
+      backgroundColor: Colors.black,
 
-    // Text
+      actionsIconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+    ),
+
+    scaffoldBackgroundColor: Colors.black,
+
+    // CARD
+    cardTheme: CardTheme(
+      elevation: 5,
+      color: Colors.deepPurple,
+      shadowColor: Colors.blueGrey,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          20,
+        ),
+      ),
+    ),
+
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: Colors.black,
+    ),
+
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.black,
+    ),
+
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll<Color>(Colors.deepPurple),
+      ),
+    ),
+
+    // Text Style
     textTheme: const TextTheme(
-      // Titles
+      /*  TITLES */
+
+      // Large
       titleLarge: TextStyle(
+        color: Colors.white,
         fontSize: 30,
-        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
 
-      titleMedium: TextStyle(
-        fontSize: 25,
-        color: Colors.blueGrey,
-        fontWeight: FontWeight.bold,
-      ),
-
+      // Small
       titleSmall: TextStyle(
-        fontSize: 24,
         color: Colors.white,
+        fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
 
-      // Small -- normal text --
-      bodySmall: TextStyle(
-        fontWeight: FontWeight.bold,
+      /* Body */
+
+      // Medium
+      bodyMedium: TextStyle(
+        color: Colors.white,
         fontSize: 22,
+        fontWeight: FontWeight.w500,
+      ),
+
+      // Small
+      bodySmall: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
       ),
     ),
   );
