@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Notes App
 
 This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
