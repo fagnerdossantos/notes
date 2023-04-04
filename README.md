@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Notes
 
 This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
@@ -32,6 +33,8 @@ To run the app on your local machine, follow these steps:
  ``` bashrc
  cd notes/
  ```
+=======
+>>>>>>> b71fc21c63586ef40807e8a0d0bbb9b6fc5e613c
 # Notes App
 
 This is a simple and user-friendly note-taking app built using Flutter. With this app, you can easily create, view, update and delete your notes in one place.
