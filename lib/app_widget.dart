@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes/app_router.dart';
 import 'package:notes/src/providers/providers.dart';
+import 'package:notes/src/router/app_router.dart';
 import 'package:notes/src/themes/theme_class.dart';
 import 'package:notes/src/themes/theme_dark.dart';
 import 'package:notes/src/themes/theme_light.dart';
