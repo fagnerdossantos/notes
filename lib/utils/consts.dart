@@ -1,0 +1,1 @@
+export 'package:notes/utils/size.dart';

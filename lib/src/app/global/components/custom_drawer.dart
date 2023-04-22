@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/src/app/global/components/selected_item_drawer_light.dart';
 import 'package:notes/src/themes/theme_class.dart';
+import 'package:notes/utils/consts.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -33,9 +34,7 @@ class CustomDrawer extends StatelessWidget {
             ),
 
             //
-            const SizedBox(
-              height: 20,
-            ),
+            const VerticalSpace(height: 20),
 
             Expanded(
               child: SelectedItemDrawer(

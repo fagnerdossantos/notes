@@ -4,6 +4,7 @@ import 'package:notes/src/app/global/bloc/notes_bloc.dart';
 import 'package:notes/src/app/note/components/create_note_field.dart';
 import 'package:notes/src/app/note/models/note_model.dart';
 import 'package:notes/src/database/time_class.dart';
+import 'package:notes/utils/consts.dart';
 
 TextEditingController titleController = TextEditingController();
 TextEditingController noteController = TextEditingController();
@@ -40,9 +41,7 @@ void customBottomSheet({required BuildContext context, required Size size}) {
               controller: titleController,
             ),
 
-            SizedBox(
-              height: size.height * .05,
-            ),
+            VerticalSpace(height: size.height * .05),
 
             // Note
             CreateNoteField(
@@ -52,9 +51,7 @@ void customBottomSheet({required BuildContext context, required Size size}) {
               controller: noteController,
             ),
 
-            SizedBox(
-              height: size.height * .1,
-            ),
+            VerticalSpace(height: size.height * .1),
 
             // Save
             ElevatedButton(
