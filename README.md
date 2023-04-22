@@ -17,7 +17,6 @@ You can preview a demo video of the working app here: <br>
 https://user-images.githubusercontent.com/61123877/218332811-0d8a31af-4c27-43bd-946c-8d418093f9b6.mp4
 
 
-
 ## Getting Started
 
 To run the app on your local machine, follow these steps:
