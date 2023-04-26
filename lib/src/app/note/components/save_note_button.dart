@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/utils/consts.dart';
 
 class SaveNoteButton extends StatelessWidget {
   final Function() callBack;
@@ -13,7 +14,7 @@ class SaveNoteButton extends StatelessWidget {
       // Action
       onPressed: callBack,
 
-      backgroundColor: Colors.black,
+      backgroundColor: black,
       child: const Icon(Icons.save_alt_outlined),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/src/app/global/bloc/notes_bloc.dart';
+import 'package:notes/src/app/note/components/empty_notes.dart';
 import 'package:notes/src/app/note/components/notes_card_grid.dart';
 
 class NotesCardBuilder extends StatefulWidget {
@@ -31,32 +32,9 @@ class _NotesCardBuilderState extends State<NotesCardBuilder> {
             items: state.models,
           );
         } else {
-          return const NoData();
+          return const EmptyNotes();
         }
       },
-    );
-  }
-}
-
-class NoData extends StatelessWidget {
-  const NoData({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        children: const [
-          // image
-          Image(
-            image: AssetImage(
-              "assets/images/no-data-blue.png",
-            ),
-            fit: BoxFit.cover,
-          ),
-
-          Text("There are no notes"),
-        ],
-      ),
     );
   }
 }

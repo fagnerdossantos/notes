@@ -79,19 +79,20 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
 
     on<SearchNote>(
       (event, emit) async {
-        // Loading all notes
         final instance = await connection.database;
+        List<NoteModel> models;
 
-        final List<NoteModel> models = await repository.readAll(
-          instance: instance,
-        );
+        if (event.search.isNotEmpty) {
+          models = (await repository.readAll(instance: instance))
+              .where((note) =>
+                  note.title.toLowerCase().contains(event.search.toLowerCase()))
+              .toList();
+        } else {
+          models = await repository.readAll(instance: instance);
+        }
 
         emit(
-          NotesFiltered(
-            models: models
-                .where((element) => element.title.contains(event.search))
-                .toList(),
-          ),
+          NotesFiltered(models: models),
         );
       },
     );

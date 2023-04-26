@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes/utils/consts.dart';
 
 class SelectedItemDrawer extends StatefulWidget {
-  final bool isDark;
-  const SelectedItemDrawer({Key? key, required this.isDark}) : super(key: key);
+  const SelectedItemDrawer({Key? key}) : super(key: key);
 
   @override
   State<SelectedItemDrawer> createState() => _SelectedItemDrawerState();
@@ -51,9 +51,7 @@ class _SelectedItemDrawerState extends State<SelectedItemDrawer> {
             duration: const Duration(milliseconds: 500),
 
             decoration: BoxDecoration(
-              color: widget.isDark
-                  ? (isSelected ? Colors.deepPurple : Colors.black)
-                  : (isSelected ? Colors.amber.shade100 : Colors.white),
+              color: (isSelected ? amber : white),
               borderRadius: BorderRadius.circular(30),
             ),
 
@@ -63,7 +61,7 @@ class _SelectedItemDrawerState extends State<SelectedItemDrawer> {
                 Icon(
                   icons[index],
                   size: 30,
-                  color: widget.isDark ? Colors.white : Colors.black
+                  color: black,
                 ),
 
                 const SizedBox(

@@ -17,11 +17,10 @@ class HomePage extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             // AppBar
-            SliverAppBar.medium(
+            SliverAppBar.large(
               title: Center(
-                // Title
                 child: Text(
-                  "Notes",
+                  "Notes\n ",
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -47,7 +46,8 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           customBottomSheet(context: context, size: size);
         },
-        backgroundColor: Colors.black,
+        backgroundColor:
+            Theme.of(context).floatingActionButtonTheme.backgroundColor,
         child: const Icon(Icons.add),
       ),
     );

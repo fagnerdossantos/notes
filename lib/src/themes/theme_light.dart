@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/utils/consts.dart';
 
 class ThemeLight {
   // Getter
@@ -9,23 +10,25 @@ class ThemeLight {
     // APP BAR
     appBarTheme: const AppBarTheme(
       // Colors
-      backgroundColor: Colors.white,
+      backgroundColor: white,
 
-      actionsIconTheme: IconThemeData(
-        color: Colors.black,
-      ),
+      actionsIconTheme: IconThemeData(color: black),
 
       iconTheme: IconThemeData(
-        color: Colors.black,
+        color: black,
       ),
     ),
 
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: white,
+
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: black,
+    ),
 
     // CARD
     cardTheme: CardTheme(
       elevation: 8,
-      shadowColor: Colors.blueGrey,
+      shadowColor: blueGrey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           20,
@@ -34,16 +37,16 @@ class ThemeLight {
     ),
 
     drawerTheme: const DrawerThemeData(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
     ),
 
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
     ),
 
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll<Color>(Colors.black),
+        backgroundColor: MaterialStatePropertyAll<Color>(black),
       ),
     ),
 
@@ -67,14 +70,14 @@ class ThemeLight {
 
       // Medium
       bodyMedium: TextStyle(
-        color: Colors.black,
+        color: black,
         fontSize: 22,
         fontWeight: FontWeight.w500,
       ),
 
       // Small
       bodySmall: TextStyle(
-        color: Colors.black,
+        color: black,
         fontSize: 20,
       ),
     ),

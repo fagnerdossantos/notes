@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/src/providers/providers.dart';
 import 'package:notes/src/router/app_router.dart';
-import 'package:notes/src/themes/theme_class.dart';
-import 'package:notes/src/themes/theme_dark.dart';
 import 'package:notes/src/themes/theme_light.dart';
 import 'package:provider/provider.dart';
 
@@ -19,16 +17,9 @@ class AppWidget extends StatelessWidget {
       providers: providersList,
 
       // Theming
-      child: ChangeNotifierProvider(
-        create: (_) => ThemeClass(ThemeDark(), ThemeLight()),
-
-        //
-        child: Consumer<ThemeClass>(
-          builder: (context, value, child) => MaterialApp(
-            onGenerateRoute: routs.onGeneratedRoute,
-            theme: context.watch<ThemeClass>().theme,
-          ),
-        ),
+      child: MaterialApp(
+        onGenerateRoute: routs.onGeneratedRoute,
+        theme: ThemeLight().light,
       ),
     );
   }
