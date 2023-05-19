@@ -1,85 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:notes/utils/consts.dart';
+import 'package:notes/src/providers/selected_item_drawer_provider.dart';
+import 'package:provider/provider.dart';
 
-class SelectedItemDrawer extends StatefulWidget {
-  const SelectedItemDrawer({Key? key}) : super(key: key);
+import '../../../../utils/colors.dart';
 
-  @override
-  State<SelectedItemDrawer> createState() => _SelectedItemDrawerState();
-}
-
-class _SelectedItemDrawerState extends State<SelectedItemDrawer> {
-  int _selectedIndex = 0;
-
-  final List<String> labels = [
-    "All Notes",
-    "Favorites",
-    "Trash",
-  ];
-
-  final List<IconData> icons = [
-    Icons.all_inbox_outlined,
-    Icons.favorite_outline,
-    Icons.delete_outline
-  ];
-
-  void _selectIndex(int index) {
-    if (index != _selectedIndex) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-  }
+class SelectedItemDrawer extends StatelessWidget {
+  final int index;
+  final IconData icon;
+  final String label;
+  const SelectedItemDrawer({
+    super.key,
+    required this.index,
+    required this.icon,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: labels.length,
-      itemBuilder: (context, index) {
-        final isSelected = index == _selectedIndex;
-        return InkWell(
-          // Action
-          onTap: () {
-            _selectIndex(index);
-          },
+    // Is Selected Controller
+    final controller = context.watch<SelectedItemDrawerProvider>();
+    bool isSelected = controller.selectedIndex == index;
 
-          // Content
-          child: AnimatedContainer(
-            // Alignment
-            padding: const EdgeInsets.all(16),
+    return InkWell(
+      // Action -- change selection --
+      onTap: () => controller.changeSelectedIndex(index),
 
-            duration: const Duration(milliseconds: 500),
+      child: AnimatedContainer(
+        // Alignment
+        padding: const EdgeInsets.all(16),
 
-            decoration: BoxDecoration(
-              color: (isSelected ? amber : white),
-              borderRadius: BorderRadius.circular(30),
+        duration: const Duration(milliseconds: 500),
+
+        decoration: BoxDecoration(
+          color: (isSelected ? amber : white),
+          borderRadius: BorderRadius.circular(30),
+        ),
+
+        child: Row(
+          children: [
+            // Icon
+            Icon(
+              icon,
+              size: 30,
+              color: black,
             ),
 
-            child: Row(
-              children: [
-                // Icon
-                Icon(
-                  icons[index],
-                  size: 30,
-                  color: black,
-                ),
+            const SizedBox(width: 10),
 
-                const SizedBox(
-                  width: 10,
-                ),
-
-                // Label text
-                Text(
-                  labels[index],
-                  style: (isSelected)
-                      ? Theme.of(context).textTheme.bodyMedium
-                      : Theme.of(context).textTheme.bodySmall,
-                ),
-              ],
+            // Label text
+            Text(
+              label,
+              style: (isSelected)
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : Theme.of(context).textTheme.bodyMedium,
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }

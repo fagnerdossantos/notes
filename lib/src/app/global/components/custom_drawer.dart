@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/src/app/global/components/selected_item_drawer_light.dart';
-import 'package:notes/utils/consts.dart';
+
+import '../../../../utils/size.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Size size;
@@ -8,6 +9,12 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List drawerItems = [
+      [Icons.all_inbox_outlined, "All Notes"],
+      [Icons.favorite_outline, "Favorites"],
+      [Icons.delete_outline, "Trash"]
+    ];
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -20,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 Text(
                   "Theme",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
               ],
             ),
@@ -28,8 +35,15 @@ class CustomDrawer extends StatelessWidget {
             //
             const VerticalSpace(height: 20),
 
-            const Expanded(
-              child: SelectedItemDrawer(),
+            Expanded(
+              child: Column(
+                children: drawerItems
+                    .map((element) => SelectedItemDrawer(
+                        index: drawerItems.indexOf(element),
+                        icon: element[0],
+                        label: element[1]))
+                    .toList(),
+              ),
             ),
           ],
         ),

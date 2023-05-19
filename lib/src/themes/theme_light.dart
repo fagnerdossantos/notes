@@ -25,14 +25,11 @@ class ThemeLight {
       backgroundColor: black,
     ),
 
-    // CARD
     cardTheme: CardTheme(
       elevation: 8,
       shadowColor: blueGrey,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          20,
-        ),
+        borderRadius: BorderRadius.circular(20),
       ),
     ),
 
@@ -44,39 +41,36 @@ class ThemeLight {
       backgroundColor: white,
     ),
 
-    elevatedButtonTheme: const ElevatedButtonThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll<Color>(black),
+        backgroundColor: MaterialStateProperty.all(black),
       ),
     ),
 
-    // Text Style
-    textTheme: const TextTheme(
-      /*  TITLES */
-
-      // Large
-      titleLarge: TextStyle(
+    textTheme: TextTheme(
+      // LARGE --Titles--
+      displayLarge: TextStyle(
+        color: black.withOpacity(0.8),
         fontSize: 30,
         fontWeight: FontWeight.bold,
       ),
 
-      // Small
-      titleSmall: TextStyle(
+      // MEDIUM --Subtitles--
+      displayMedium: TextStyle(
+        color: black.withOpacity(0.7),
         fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
 
-      /* Body */
-
-      // Medium
-      bodyMedium: TextStyle(
-        color: black,
+      // LARGE --Normal text--
+      bodyLarge: TextStyle(
+        color: black.withOpacity(0.8),
         fontSize: 22,
         fontWeight: FontWeight.w500,
       ),
 
-      // Small
-      bodySmall: TextStyle(
+      // MEDIUM --Small text--
+      bodyMedium: const TextStyle(
         color: black,
         fontSize: 20,
       ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:notes/src/app/global/components/custom_bottom_sheet.dart';
-import 'package:notes/src/app/global/components/custom_drawer.dart';
-import 'package:notes/src/app/global/components/search_bar.dart';
-import 'package:notes/src/app/note/widgets/custom_notes_card_builder.dart';
+
+import '../../global/components/custom_app_bar.dart';
+import '../../global/components/custom_bottom_sheet.dart';
+import '../../global/components/custom_drawer.dart';
+import '../../global/components/custom_floating_actions_button.dart';
+import '../../global/components/custom_search_bar.dart';
+import '../../note/widgets/custom_notes_card_builder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,26 +15,27 @@ class HomePage extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-        child: CustomScrollView(
-          slivers: [
-            // AppBar
-            SliverAppBar.large(
-              title: Center(
-                child: Text(
-                  "Notes\n ",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              actions: const [
-                SearchBar(),
-              ],
-            ),
+      appBar: const CustomAppBar(label: "Notes"),
 
-            // Notes
-            const NotesCardBuilder(),
-          ],
+      //
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Search
+              SizedBox(
+                // Sizing
+                height: 100,
+                width: size.width,
+
+                child: const Center(child: CustomSearchBar()),
+              ),
+
+              const Expanded(child: NotesCardBuilder()),
+            ],
+          ),
         ),
       ),
 
@@ -42,13 +46,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
+      floatingActionButton: CustomFloatingActionButton(
+        callBack: () {
           customBottomSheet(context: context, size: size);
         },
-        backgroundColor:
-            Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: const Icon(Icons.add),
+        icon: Icons.add,
       ),
     );
   }

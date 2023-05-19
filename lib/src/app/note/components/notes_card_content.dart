@@ -14,14 +14,14 @@ class NotesCardContent extends StatelessWidget {
         CustomExpandedText(
           flex: 2,
           text: model.title,
-          style: Theme.of(context).textTheme.titleSmall!,
+          style: Theme.of(context).textTheme.displayMedium!,
         ),
 
         // Note
         CustomExpandedText(
           flex: 14,
           text: model.note,
-          style: Theme.of(context).textTheme.bodyMedium!,
+          style: Theme.of(context).textTheme.bodyLarge!,
         ),
       ],
     );

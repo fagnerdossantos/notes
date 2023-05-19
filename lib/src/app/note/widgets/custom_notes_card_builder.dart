@@ -13,12 +13,12 @@ class NotesCardBuilder extends StatefulWidget {
 
 class _NotesCardBuilderState extends State<NotesCardBuilder> {
   // Controller
-  late final NotesBloc blocController;
+  late final NotesBloc bloc;
 
   @override
   void didChangeDependencies() {
-    blocController = BlocProvider.of<NotesBloc>(context);
-    blocController.add(LoadNotes());
+    bloc = context.read<NotesBloc>();
+    bloc.add(LoadNotes());
 
     super.didChangeDependencies();
   }
@@ -28,9 +28,11 @@ class _NotesCardBuilderState extends State<NotesCardBuilder> {
     return BlocBuilder<NotesBloc, NotesState>(
       builder: (context, state) {
         if (state is NotesSuccess || state is NotesFiltered) {
-          return NotesCardGrid(
-            items: state.models,
-          );
+          return state.models.isNotEmpty
+              ? NotesCardGrid(
+                  items: state.models,
+                )
+              : const EmptyNotes();
         } else {
           return const EmptyNotes();
         }

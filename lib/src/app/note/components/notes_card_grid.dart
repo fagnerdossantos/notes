@@ -8,47 +8,42 @@ class NotesCardGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      // Grid Delegate
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Number of columns
-        childAspectRatio: .56, // Width/height ratio of each child
-      ),
+    return GridView.count(
+  // Number of columns
+  crossAxisCount: 2,
 
-      // Delegate Builder
-      delegate: SliverChildBuilderDelegate(
-        // Count
-        childCount: items.length,
+  // Width/height ratio of each child
+  childAspectRatio: .56,
 
-        (BuildContext context, int index) {
-          // Even or Odd
-          bool isEvenRow = (index ~/ 2) % 2 == 0;
+  // Item Builder
+  children: List.generate(items.length, (index) {
+    // Even or Odd
+    bool isEvenRow = (index ~/ 2) % 2 == 0;
 
-          if (isEvenRow) {
-            // Even
-            return (index % 2 == 0)
-                ? CustomNotesCard(
-                    isLarge: true,
-                    model: items[index],
-                  )
-                : CustomNotesCard(
-                    isLarge: false,
-                    model: items[index],
-                  );
-          } else {
-            // Odd
-            return (index % 2 == 0)
-                ? CustomNotesCard(
-                    isLarge: false,
-                    model: items[index],
-                  )
-                : CustomNotesCard(
-                    isLarge: true,
-                    model: items[index],
-                  );
-          }
-        },
-      ),
-    );
+    if (isEvenRow) {
+      // Even
+      return (index % 2 == 0)
+          ? CustomNotesCard(
+              isLarge: true,
+              model: items[index],
+            )
+          : CustomNotesCard(
+              isLarge: false,
+              model: items[index],
+            );
+    } else {
+      // Odd
+      return (index % 2 == 0)
+          ? CustomNotesCard(
+              isLarge: false,
+              model: items[index],
+            )
+          : CustomNotesCard(
+              isLarge: true,
+              model: items[index],
+            );
+    }
+  }),
+);
   }
 }

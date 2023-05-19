@@ -14,46 +14,34 @@ class CreateNoteField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(
-          children: [
-            // Title
-            SizedBox(
-              width: size.width * .9,
-              child: Text(
-                label,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ),
-
-            // Field
-            SizedBox(
-              width: size.width * .9,
-              child: Card(
-                // Sizing inside
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0,
-                  ),
-
-                  // Content
-                  child: TextFormField(
-                    maxLines: isTitle ? 1 : 10,
-                    // Text Style
-                    style: isTitle
-                        ? Theme.of(context).textTheme.titleLarge
-                        : Theme.of(context).textTheme.titleSmall,
-
-                    controller: controller,
-                  ),
-                ),
-              ),
-            ),
-          ],
+    return TextFormField(
+      // Styling
+      decoration: InputDecoration(
+        // Shape
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
         ),
-      ],
+
+        // Label
+        label: Text(label),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+
+      // Text Style
+      style: isTitle
+          ? Theme.of(context).textTheme.displayMedium
+          : Theme.of(context).textTheme.bodyLarge,
+
+      // Lines
+      maxLines: isTitle ? 1 : 10,
+
+      onTapOutside: (_) {
+        FocusScope.of(context).unfocus();
+      },
+
+      controller: controller,
     );
   }
 }
