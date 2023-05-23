@@ -4,7 +4,7 @@ This is a simple and user-friendly note-taking app built using Flutter. With thi
 
 ## Key Features
 
--   Create new notes with ease.
+-   Create new notes ease.
 -   View, edit and delete your existing notes.
 -   Store notes locally on your device in a SQLite database.
 -   User-friendly interface to manage your notes.
