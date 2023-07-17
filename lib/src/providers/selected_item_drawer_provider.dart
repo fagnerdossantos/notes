@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show ChangeNotifier;
 
-class SelectedItemDrawerProvider extends ChangeNotifier {
-  int selectedIndex = 0;
+class SelectedItemDrawer extends ChangeNotifier {
+  int currentIndex = 0;
 
   void changeSelectedIndex(int newIndex) {
-    selectedIndex = newIndex;
+    currentIndex = newIndex;
     notifyListeners();
   }
 }

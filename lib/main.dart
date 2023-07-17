@@ -1,8 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:notes/app_widget.dart';
+import 'package:flutter/material.dart'
+    show Colors, WidgetsFlutterBinding, runApp;
+import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
+
+import 'app_widget.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const AppWidget());
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

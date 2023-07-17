@@ -6,15 +6,13 @@ This is a simple and user-friendly note-taking app built using Flutter. With thi
 
 -   Create new notes ease.
 -   View, edit and delete your existing notes.
--   Store notes locally on your device in a SQLite database.
+-   Store notes locally on your device in a **objectbox** database.
 -   User-friendly interface to manage your notes.
-> -   Favourite... Not implemented yet!
+-   Favorite your notes.
+  
 ## Working APP
 
 You can preview a demo video of the working app here: <br>
-
-
-https://user-images.githubusercontent.com/61123877/234676221-fb169acd-dcf9-42a5-aa66-6eae3534fb8b.mp4
 
 
 ## Getting Started

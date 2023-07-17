@@ -1,23 +1,32 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes/src/app/global/bloc/notes_bloc.dart';
-import 'package:notes/src/database/notes_db.dart';
-import 'package:notes/src/providers/selected_item_drawer_provider.dart';
-import 'package:notes/src/repository/notes_repository.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart'
+    show ChangeNotifierProvider, Provider, ReadContext;
+
 import 'package:provider/single_child_widget.dart';
 
+import '../../database/objectbox_database.dart';
+import '../data/repository/notes_repository.dart';
+import '../domain/bloc/navigation_bloc.dart';
+import '../domain/bloc/notes_bloc.dart';
+import 'selected_item_drawer_provider.dart';
+
 List<SingleChildWidget> providersList = [
-  // Normal Providers
-  Provider(create: (_) => NotesDb()),
-  Provider(create: (_) => NotesRepository()),
+  // Database
+  Provider(create: (_) => ObjectboxDatabase()),
 
-  ChangeNotifierProvider(create: (_) => SelectedItemDrawerProvider()),
-
-  // BLOC
-  BlocProvider(
-    create: (context) => NotesBloc(
-      connection: context.read<NotesDb>(),
-      repository: context.read<NotesRepository>(),
+  // Repositories
+  Provider(
+    create: (context) => NotesRepository(
+      context.read<ObjectboxDatabase>(),
     ),
   ),
+
+  // Change notifiers
+  ChangeNotifierProvider(create: (_) => SelectedItemDrawer()),
+
+  // Bloc
+  Provider(
+    create: (_) => NavigationBloc(),
+  ),
+
+  Provider(create: (context) => NotesBloc(context.read<NotesRepository>())),
 ];
