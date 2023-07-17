@@ -14,6 +14,13 @@ This is a simple and user-friendly note-taking app built using Flutter. With thi
 
 You can preview a demo video of the working app here: <br>
 
+### Creating and editing notes
+
+https://github.com/fagnerdossantos/notes/assets/61123877/428e43a0-c716-4db5-ab7a-6ea4143814ae
+
+https://github.com/fagnerdossantos/notes/assets/61123877/0b75610d-5550-4273-8349-160ef293da66
+
+
 
 ## Getting Started
 
