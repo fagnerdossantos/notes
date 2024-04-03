@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart' show BorderRadius;
 
-final class RoundedShape {
-  static BorderRadius small = BorderRadius.circular(10);
-  static BorderRadius medium = BorderRadius.circular(30);
-  static BorderRadius large = BorderRadius.circular(50);
+enum RoundedShape {
+  small,
+  medium,
+  large;
+
+  BorderRadius get shape => switch (this) {
+        RoundedShape.small => BorderRadius.circular(10),
+        RoundedShape.medium => BorderRadius.circular(30),
+        RoundedShape.large => BorderRadius.circular(50),
+      };
 }

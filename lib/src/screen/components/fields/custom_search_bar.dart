@@ -28,7 +28,7 @@ class CustomSearchBar extends StatelessWidget {
       // Styling
       elevation: const MaterialStatePropertyAll(3),
       shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: RoundedShape.small),
+        RoundedRectangleBorder(borderRadius: RoundedShape.small.shape),
       ),
 
       leading: const Icon(

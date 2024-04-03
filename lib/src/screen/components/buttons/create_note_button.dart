@@ -59,12 +59,12 @@ class CreateNoteButton extends StatelessWidget {
         Navigator.pop(context);
       },
 
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.save_alt_outlined),
-          HorizontalSpacing(value: Spacing.small),
-          Text(
+          const Icon(Icons.save_alt_outlined),
+          SpaceHorizontal.small.add,
+          const Text(
             "save",
             style: TextStyle(
               color: DefaultColors.white,

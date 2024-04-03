@@ -67,7 +67,7 @@ class NoteCardSmall extends StatelessWidget {
                         ),
                       ),
 
-                      const VerticalSpacing(value: Spacing.small),
+                      SpaceVertical.small.add,
 
                       // Text
                       Expanded(

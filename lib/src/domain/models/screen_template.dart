@@ -59,19 +59,19 @@ class _ScreenTemplateState extends State<ScreenTemplate> {
       ),
 
       // Give the Scroll
-      body: const Padding(
+      body: Padding(
         padding: dfPadding,
         child: Column(
           children: [
-            VerticalSpacing(value: Spacing.small),
+            SpaceVertical.small.add,
 
             // Search notes
-            CustomSearchBar(),
+            const CustomSearchBar(),
 
-            VerticalSpacing(value: Spacing.medium),
+            SpaceVertical.medium.add,
 
             // Notes builder
-            Expanded(child: NoteStateViewmodel()),
+            const Expanded(child: NoteStateViewmodel()),
           ],
         ),
       ),

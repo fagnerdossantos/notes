@@ -65,7 +65,7 @@ class NoteView extends StatelessWidget {
         child: Column(
           children: [
             //
-            const VerticalSpacing(value: Spacing.medium),
+            SpaceVertical.medium.add,
 
             for (var map in fieldItems) ...[
               // Field
@@ -75,13 +75,13 @@ class NoteView extends StatelessWidget {
                   style: map["style"]),
 
               // Spacing
-              const VerticalSpacing(value: Spacing.large),
+              SpaceVertical.large.add,
             ],
 
             // DATE AND HOUR
             FormattedTime(time: model.time),
 
-            const VerticalSpacing(value: Spacing.large),
+            SpaceVertical.large.add,
 
             const ColorButton(),
           ],

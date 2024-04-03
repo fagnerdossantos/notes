@@ -10,7 +10,7 @@ final class AppListTileTheme {
 
   final theme = ListTileThemeData(
     // Rounded shape
-    shape: RoundedRectangleBorder(borderRadius: RoundedShape.small),
+    shape: RoundedRectangleBorder(borderRadius: RoundedShape.small.shape),
 
     selectedColor: DefaultColors.amber,
     selectedTileColor: DefaultColors.blue,

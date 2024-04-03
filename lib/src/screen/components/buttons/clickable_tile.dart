@@ -7,7 +7,6 @@ import 'package:flutter/material.dart'
         Icon,
         IconData,
         InkWell,
-        Key,
         MainAxisAlignment,
         Padding,
         Row,
@@ -28,11 +27,11 @@ class ClickableTile extends StatelessWidget {
   final IconData icon;
   final String label;
   const ClickableTile({
-    Key? key,
+    super.key,
     required this.index,
     required this.icon,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +67,7 @@ class ClickableTile extends StatelessWidget {
             color: isSelected ? DefaultColors.amber : DefaultColors.white,
 
             // Shape
-            borderRadius: RoundedShape.small,
+            borderRadius: RoundedShape.small.shape,
           ),
 
           duration: const Duration(milliseconds: 500),

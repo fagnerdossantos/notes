@@ -1,43 +1,30 @@
-import 'package:flutter/material.dart'
-    show BuildContext, SizedBox, StatelessWidget, Widget;
+import 'package:flutter/material.dart' show SizedBox, Widget;
 
 // DEFAULT SPACING
-enum Spacing {
-  small(value: 10),
-  medium(value: 30),
-  large(value: 50);
+enum SpaceVertical {
+  small,
+  medium,
+  large;
 
-  final double value;
-  const Spacing({required this.value});
+  Widget get add => SizedBox(
+        height: switch (this) {
+          SpaceVertical.small => 10,
+          SpaceVertical.medium => 30,
+          SpaceVertical.large => 50,
+        },
+      );
 }
 
-class VerticalSpacing extends StatelessWidget {
-  final Spacing value;
-  const VerticalSpacing({
-    super.key,
-    required this.value,
-  });
+enum SpaceHorizontal {
+  small,
+  medium,
+  large;
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: value.value,
-    );
-  }
-}
-
-class HorizontalSpacing extends StatelessWidget {
-  final Spacing value;
-
-  const HorizontalSpacing({
-    super.key,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: value.value,
-    );
-  }
+  Widget get add => SizedBox(
+        width: switch (this) {
+          SpaceHorizontal.small => 10,
+          SpaceHorizontal.medium => 30,
+          SpaceHorizontal.large => 50,
+        },
+      );
 }

@@ -65,13 +65,13 @@ class _ColorButtonState extends State<ColorButton> {
               ),
 
               // Spacing
-              const HorizontalSpacing(value: Spacing.small),
+              SpaceHorizontal.small.add
             ],
           ],
         ),
 
         //
-        const VerticalSpacing(value: Spacing.small),
+        SpaceVertical.small.add,
 
         Container(
           margin: const EdgeInsets.only(right: 10),

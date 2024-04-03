@@ -15,7 +15,7 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:provider/provider.dart' show ReadContext;
 
-import '../../../core/utils/utils.dart';
+import '../../../core/utils/spacing.dart';
 import '../../../domain/bloc/navigation_bloc.dart';
 import '../../../domain/helpers/colors_helper.dart';
 import '../../../domain/models/note_model.dart';
@@ -62,7 +62,7 @@ class NoteCardLarge extends StatelessWidget {
                     ),
                   ),
 
-                  const VerticalSpacing(value: Spacing.small),
+                  SpaceVertical.small.add,
 
                   // Text
                   Expanded(

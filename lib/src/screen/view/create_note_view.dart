@@ -8,10 +8,10 @@ import 'package:flutter/material.dart'
         MainAxisAlignment,
         MediaQuery,
         Padding,
+        PopScope,
         Radius,
         RoundedRectangleBorder,
         TextEditingController,
-        WillPopScope,
         showModalBottomSheet;
 
 import '../../core/utils/spacing.dart';
@@ -42,11 +42,11 @@ void createNoteView({required BuildContext context}) {
 
     builder: (context) {
       // Clear controller if user click back button
-      return WillPopScope(
-        onWillPop: () async {
+      return PopScope(
+        onPopInvoked: (pop) async {
           titleController.clear();
           noteController.clear();
-          return true;
+          return;
         },
 
         // Content
@@ -79,13 +79,13 @@ void createNoteView({required BuildContext context}) {
                 ),
 
                 //
-                const VerticalSpacing(value: Spacing.medium),
+                SpaceVertical.medium.add,
               ],
 
               // Color button picker
               const ColorButton(),
 
-              const VerticalSpacing(value: Spacing.medium),
+              SpaceVertical.medium.add,
 
               // Save
               CreateNoteButton(
