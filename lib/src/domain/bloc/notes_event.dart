@@ -1,37 +1,37 @@
 part of 'notes_bloc.dart';
 
-abstract class NotesEvent {}
+sealed class NotesEvent {}
 
 class LoadEvent extends NotesEvent {}
 
-class CreateEvent extends NotesEvent {
+class NoteCreate extends NotesEvent {
   final NoteModel model;
 
-  CreateEvent({required this.model});
+  NoteCreate({required this.model});
 }
 
-class UpdateEvent extends NotesEvent {
+class NoteUpdate extends NotesEvent {
   final NoteModel model;
 
-  UpdateEvent({required this.model});
+  NoteUpdate({required this.model});
 }
 
-class DeleteEvent extends NotesEvent {
+class NoteDelete extends NotesEvent {
   final int id;
 
-  DeleteEvent({required this.id});
+  NoteDelete({required this.id});
 }
 
-class FilterEvent extends NotesEvent {
+class NoteFilter extends NotesEvent {
   final String search;
 
-  FilterEvent({required this.search});
+  NoteFilter({required this.search});
 }
 
-class SetFavoriteEvent extends NotesEvent {
+class NoteSetFavorite extends NotesEvent {
   final NoteModel model;
 
-  SetFavoriteEvent({required this.model});
+  NoteSetFavorite({required this.model});
 }
 
-class GetFavoriteEvent extends NotesEvent {}
+class NoteGetFavorite extends NotesEvent {}

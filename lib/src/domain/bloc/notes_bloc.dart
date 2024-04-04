@@ -21,7 +21,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // CREATE
-    on<CreateEvent>(
+    on<NoteCreate>(
       (event, emit) async {
         emit(
           LoadedState(
@@ -34,7 +34,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // UPDATE
-    on<UpdateEvent>(
+    on<NoteUpdate>(
       (event, emit) async {
         emit(
           LoadedState(
@@ -47,7 +47,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // DELETE
-    on<DeleteEvent>(
+    on<NoteDelete>(
       (event, emit) async {
         // Deleting in a given id
         await _repository.deleteNote(id: event.id);
@@ -63,7 +63,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // Set
-    on<SetFavoriteEvent>(
+    on<NoteSetFavorite>(
       (event, emit) async {
         await _repository.setFavoriteNotes(model: event.model);
 
@@ -78,7 +78,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // Get FAVORITE
-    on<GetFavoriteEvent>(
+    on<NoteGetFavorite>(
       (event, emit) async {
         emit(
           LoadedState(
@@ -89,54 +89,40 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
 
     // Filtering list
-    on<FilterEvent>((event, emit) async {
+    on<NoteFilter>((event, emit) async {
       List<NoteModel> models;
 
-      switch (currentView) {
-        case ViewKey.home:
+      models = _filterNotesBySearch(
+        search: event.search,
+        notes: await switch (currentView) {
+          ViewKey.home => _repository.loadAllNotes(),
+          ViewKey.favorite => _repository.getFavoriteNotes(),
+          _ => _repository.loadAllNotes(), // !
+        },
+      );
 
-          // Notes
-          models = await _filterNotesBySearch(
-              _repository.loadAllNotes(), event.search);
-
-          // State
-          emit(models.isNotEmpty
-              ? FilteredState(models: models)
-              : LoadedState(models: models));
-
-          break;
-
-        case ViewKey.favorite:
-
-          // Notes
-          models = await _filterNotesBySearch(
-              _repository.getFavoriteNotes(), event.search);
-
-          // State
-          emit(models.isNotEmpty
-              ? FilteredState(models: models)
-              : LoadedState(models: models));
-
-          break;
-
-        default:
-          break;
-      }
+      // State
+      emit(
+        models.isNotEmpty
+            ? FilteredState(models: models)
+            : LoadedState(models: models),
+      );
     });
   }
 }
 
 // Aux filter func
-Future<List<NoteModel>> _filterNotesBySearch(
-    Future<List<NoteModel>> notesFuture, String search) async {
-  final notes = await notesFuture;
+bool customSearch(NoteModel item, String search) {
+  return item.title.toLowerCase().contains(search.toLowerCase());
+}
 
+List<NoteModel> _filterNotesBySearch({
+  required List<NoteModel> notes,
+  required String search,
+}) {
   if (search.isNotEmpty) {
-    return notes
-        .where(
-            (note) => note.title.toLowerCase().contains(search.toLowerCase()))
-        .toList();
-  } else {
-    return notes;
+    return notes.where((item) => customSearch(item, search)).toList();
   }
+
+  return notes;
 }

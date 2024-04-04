@@ -14,7 +14,7 @@ class FavoriteView extends StatelessWidget {
     currentView = ViewKey.favorite;
 
     return ScreenTemplate(
-      event: GetFavoriteEvent(),
+      event: NoteGetFavorite(),
       title: "Favorites",
     );
   }

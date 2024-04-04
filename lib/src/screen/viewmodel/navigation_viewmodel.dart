@@ -6,9 +6,6 @@ import '../../domain/bloc/navigation_bloc.dart';
 import '../view/favorite_view.dart';
 import '../view/home_view.dart';
 import '../view/note_view.dart';
-// show BuildContext, SizedBox, StatelessWidget, Widget;
-
-// import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder;
 
 class NavigationViewModel extends StatelessWidget {
   const NavigationViewModel({super.key});

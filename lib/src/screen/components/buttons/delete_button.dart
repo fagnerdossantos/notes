@@ -20,7 +20,7 @@ class DeleteButton extends StatelessWidget {
     return IconButton(
       // Action
       onPressed: () {
-        blocNotes.add(DeleteEvent(id: id));
+        blocNotes.add(NoteDelete(id: id));
         blocNav.add(GoBackTo()); // Context Handled inside Navigation bloc
       },
 

@@ -19,8 +19,8 @@ import '../components/buttons/color_button.dart';
 import '../components/buttons/create_note_button.dart';
 import '../components/fields/note_field.dart';
 
-var titleController = TextEditingController();
-var noteController = TextEditingController();
+final TextEditingController titleController = TextEditingController();
+final TextEditingController noteController = TextEditingController();
 
 void createNoteView({required BuildContext context}) {
   // Calling Bottom sheet
@@ -60,27 +60,23 @@ void createNoteView({required BuildContext context}) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Fields
-              for (Map item in [
-                {
-                  "Label": "Title",
-                  "IsTitle": true,
-                  "controller": titleController
-                },
-                {
-                  "Label": "Note",
-                  "IsTitle": false,
-                  "controller": noteController
-                },
-              ]) ...[
-                NoteField(
-                  label: item["Label"],
-                  isTitle: item["IsTitle"],
-                  controller: item["controller"],
-                ),
+              NoteField(
+                label: "Title",
+                isTitle: true,
+                controller: titleController,
+              ),
 
-                //
-                SpaceVertical.medium.add,
-              ],
+              SpaceVertical.medium.add,
+
+
+              NoteField(
+                label: "Note",
+                isTitle: false,
+                controller: noteController,
+              ),
+
+              //
+              SpaceVertical.medium.add,
 
               // Color button picker
               const ColorButton(),

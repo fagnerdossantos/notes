@@ -19,6 +19,7 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         theme: AppTheme.instance.theme,
         home: const NavigationViewModel(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

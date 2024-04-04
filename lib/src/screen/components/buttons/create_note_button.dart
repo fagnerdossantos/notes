@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart'
     show
         BuildContext,
+        ButtonStyle,
+        Color,
         ElevatedButton,
         Icon,
         Icons,
         MainAxisAlignment,
+        MaterialStateProperty,
         Navigator,
         Row,
         StatelessWidget,
@@ -35,11 +38,16 @@ class CreateNoteButton extends StatelessWidget {
     final bloc = context.read<NotesBloc>();
 
     return ElevatedButton(
+      // Color
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(DefaultColors.black),
+      ),
+
       // Action
       onPressed: () {
         // Adding to bloc
         bloc.add(
-          CreateEvent(
+          NoteCreate(
             model: NoteModel(
               title: titleController.text,
               note: noteController.text,

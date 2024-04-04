@@ -41,7 +41,7 @@ class CustomSearchBar extends StatelessWidget {
       ),
 
       // Action
-      onChanged: (value) => bloc.add(FilterEvent(search: value)),
+      onChanged: (value) => bloc.add(NoteFilter(search: value)),
     );
   }
 }

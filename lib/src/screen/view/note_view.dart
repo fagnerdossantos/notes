@@ -3,6 +3,7 @@ import 'package:flutter/material.dart'
         BuildContext,
         Column,
         Icons,
+        Row,
         Scaffold,
         SingleChildScrollView,
         StatelessWidget,
@@ -37,19 +38,6 @@ class NoteView extends StatelessWidget {
     // Setting color to check changes after
     colorController = model.color;
 
-    final List<Map> fieldItems = [
-      {
-        "controller": titleController,
-        "maxLines": 1,
-        "style": Theme.of(context).textTheme.titleLarge
-      },
-      {
-        "controller": noteController,
-        "maxLines": 10,
-        "style": Theme.of(context).textTheme.bodySmall
-      },
-    ];
-
     return Scaffold(
       //App bar
       appBar: CustomAppBar(
@@ -67,23 +55,31 @@ class NoteView extends StatelessWidget {
             //
             SpaceVertical.medium.add,
 
-            for (var map in fieldItems) ...[
-              // Field
-              CustomTextField(
-                  controller: map["controller"],
-                  maxLines: map["maxLines"],
-                  style: map["style"]),
+            CustomTextField(
+              controller: titleController,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.titleLarge!,
+            ),
 
-              // Spacing
-              SpaceVertical.large.add,
-            ],
+            SpaceVertical.large.add,
+
+            CustomTextField(
+              controller: noteController,
+              maxLines: 10,
+              style: Theme.of(context).textTheme.bodySmall!,
+            ),
 
             // DATE AND HOUR
             FormattedTime(time: model.time),
 
-            SpaceVertical.large.add,
+            SpaceVertical.medium.add,
 
-            const ColorButton(),
+            Row(
+              children: [
+                SpaceHorizontal.small.add,
+                const ColorButton(),
+              ],
+            ),
           ],
         ),
       ),
@@ -95,19 +91,15 @@ class NoteView extends StatelessWidget {
 
         // Action
         callback: () {
-          // New model
-          final newModel = NoteModel(
-            id: model.id,
-            title: titleController.text,
-            note: noteController.text,
-            color: colorController,
-            favorite: model.favorite,
-            time: DateTime.now(),
-          );
-
           context.read<NotesBloc>().add(
-                UpdateEvent(
-                  model: newModel,
+                // New model
+                NoteUpdate(
+                  model: model.copyWith(
+                    title: titleController.text,
+                    note: noteController.text,
+                    color: colorController,
+                    time: DateTime.now(),
+                  ),
                 ),
               );
 

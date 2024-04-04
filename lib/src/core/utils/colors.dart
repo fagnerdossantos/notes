@@ -6,7 +6,7 @@ final class DefaultColors {
   static const Color blueGrey = Color(0xFF607D8B);
   static const Color transparent = Color(0x00000000);
 
-  //
+  // Notes colors
   static const Color amber = Color(0xFFFFECB3);
   static const Color purple = Color(0xFF9F06CE);
   static const Color red = Color(0xFFF00505);

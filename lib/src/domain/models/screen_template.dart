@@ -52,7 +52,7 @@ class _ScreenTemplateState extends State<ScreenTemplate> {
 
     return Scaffold(
       // Bg Colors
-      backgroundColor: DefaultColors.white.withOpacity(.98),
+      backgroundColor: DefaultColors.white.withOpacity(.9),
       // App Bar
       appBar: CustomAppBar(
         title: widget.title,

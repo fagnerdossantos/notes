@@ -47,8 +47,8 @@ class _ColorButtonState extends State<ColorButton> {
 
                 child: Container(
                   // Sizing
-                  height: 40,
-                  width: 40,
+                  height: 30,
+                  width: 30,
 
                   decoration: BoxDecoration(
                     color: _colors[i],

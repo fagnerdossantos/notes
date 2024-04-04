@@ -40,7 +40,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         changeSelection();
         widget.model.favorite = isFavorite;
         bloc.add(
-          SetFavoriteEvent(
+          NoteSetFavorite(
             model: widget.model,
           ),
         );
